@@ -112,17 +112,18 @@ posts.forEach((elem) => {
 
 const card = document.getElementById('container');
 card.innerHTML = content;
+
 const like = document.getElementsByClassName('js-like-button');
 
 for(let i=0; i<like.length; i++){
     like[i].addEventListener('click', function(){
         const idCounter = parseInt(this.dataset.postid);
-        console.log(idCounter)
+
         const likes = document.getElementById(`like-counter-${idCounter}`);
         const likeNumber = parseInt(likes.innerText);
         likes.innerText = likeNumber+1
+
         const likeColor = document.getElementsByClassName('like-button')
-        console.log(likeColor)
         likeColor[i].classList.add('red')
         switch(likeNumber){
             case 81:
