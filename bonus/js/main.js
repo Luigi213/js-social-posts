@@ -125,28 +125,30 @@ for(let i=0; i<like.length; i++){
 
         const likeColor = document.getElementsByClassName('like-button')
         likeColor[i].classList.add('red')
-        switch(likeNumber){
-            case 81:
-                likes.innerText = likeNumber-1
-                likeColor[i].classList.remove('red')
-                break;
-            case 120:
-                likes.innerText = likeNumber-1
-                likeColor[i].classList.remove('red')
-                break;
-            case 78:
-                likes.innerText = likeNumber-1
-                likeColor[i].classList.remove('red')
-                break;
-            case 56:
-                likes.innerText = likeNumber-1
-                likeColor[i].classList.remove('red')
-                break;
-            case 95:
-                likes.innerText = likeNumber-1
-                likeColor[i].classList.remove('red')
-                break;
-        }
+        posts.forEach((elem) => {
+            switch(likeNumber){
+                case elem.likes+ 1:
+                    likes.innerText = likeNumber-1
+                    likeColor[i].classList.remove('red')
+                    break;
+                case elem.likes+ 1:
+                    likes.innerText = likeNumber-1
+                    likeColor[i].classList.remove('red')
+                    break;
+                case elem.likes+ 1:
+                    likes.innerText = likeNumber-1
+                    likeColor[i].classList.remove('red')
+                    break;
+                case elem.likes+ 1:
+                    likes.innerText = likeNumber-1
+                    likeColor[i].classList.remove('red')
+                    break;
+                case elem.likes+ 1:
+                    likes.innerText = likeNumber-1
+                    likeColor[i].classList.remove('red')
+                    break;
+            }
+        })
     })
 }
 
