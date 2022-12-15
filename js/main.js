@@ -8,6 +8,8 @@
 // numero di likes.
 
 // Milestone 2 - Prendendo come riferimento il layout di esempio presente nell'html, stampiamo i post del nostro feed.
+
+// Milestone 3 - Se clicchiamo sul tasto "Mi Piace" cambiamo il colore al testo del bottone e incrementiamo il counter dei likes 
 const posts = [
     {
         "id": 1,
@@ -69,41 +71,51 @@ const posts = [
 let content = "";
 
 posts.forEach((elem) => {
-    
     content +=`
     <div class="post">
-    <div class="post__header">
-    <div class="post-meta">                    
-    <div class="post-meta__icon">
-    <img class="profile-pic" src="${elem.author.image}" alt="Phil Mangione">                    
-    </div>
-    <div class="post-meta__data">
-    <div class="post-meta__author">${elem.author.name}</div>
-    <div class="post-meta__time">${elem.created}</div>
-    </div>                    
-    </div>
-    </div>
-    <div class="post__text">${elem.content}</div>
-    <div class="post__image">
-    <img src="${elem.media}" alt="">
-    </div>
-    <div class="post__footer">
-    <div class="likes js-likes">
-    <div class="likes__cta">
-    <a class="like-button  js-like-button" href="#" data-postid="1">
-    <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
-    <span class="like-button__label">Mi Piace</span>
-    </a>
-    </div>
-    <div class="likes__counter">
-    Piace a <b id="like-counter-1" class="js-likes-counter">${elem.likes}</b> persone
-    </div>
-    </div> 
-    </div>  
+        <div class="post__header">
+            <div class="post-meta">                    
+                <div class="post-meta__icon">
+                    <img class="profile-pic" src="${elem.author.image}" alt="Phil Mangione">     
+                </div>
+                <div class="post-meta__data">
+                    <div class="post-meta__author">${elem.author.name}</div>
+                    <div class="post-meta__time">${elem.created}</div>
+                </div>                    
+            </div>               
+        </div>
+        <div class="post__text">${elem.content}</div>
+        <div class="post__image">
+            <img src="${elem.media}" alt="">
+        </div>
+        <div class="post__footer">
+            <div class="likes js-likes">
+                <div class="likes__cta">
+                    <a  class="like-button  js-like-button" href="#" data-postid="${elem.id}">
+                        <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
+                        <span class="like-button__label">Mi Piace</span>
+                    </a>
+                </div>
+                <div class="likes__counter">
+                    Piace a <b id="like-counter-${elem.id}" class="js-likes-counter">${elem.likes}</b> persone
+                </div>
+            </div> 
+        </div>  
     </div>        
     `
 })
 
 const card = document.getElementById('container');
 card.innerHTML = content;
+const like = document.getElementsByClassName('js-like-button');
+
+for(let i=0; i<like.length; i++){
+    like[i].addEventListener('click', function(){
+        const idCounter = this.dataset.postid;
+        const likes = document.getElementById(`like-counter-${idCounter}`);
+        const likeNumber = parseInt(likes.innerText);
+        likes.innerText = likeNumber+1
+        console.log(likeNumber)
+    })
+}
 
