@@ -131,22 +131,6 @@ for(let i=0; i<like.length; i++){
                     likes.innerText = likeNumber-1
                     likeColor[i].classList.remove('red')
                     break;
-                case elem.likes+ 1:
-                    likes.innerText = likeNumber-1
-                    likeColor[i].classList.remove('red')
-                    break;
-                case elem.likes+ 1:
-                    likes.innerText = likeNumber-1
-                    likeColor[i].classList.remove('red')
-                    break;
-                case elem.likes+ 1:
-                    likes.innerText = likeNumber-1
-                    likeColor[i].classList.remove('red')
-                    break;
-                case elem.likes+ 1:
-                    likes.innerText = likeNumber-1
-                    likeColor[i].classList.remove('red')
-                    break;
             }
         })
     })
