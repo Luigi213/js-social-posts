@@ -13,6 +13,8 @@
 
 // BONUS (da fare solo una volta finite le milestone principali)
 // 1 - Formattare le date in formato italiano (gg/mm/aaaa)
+// 2- Gestire l'assenza dell'immagine profilo con un elemento di fallback che contiene le iniziali dell'utente (es. Luca Formicola > LF).
+// 3 - Al click su un pulsante "Mi Piace" di un post, se abbiamo già cliccato dobbiamo decrementare il contatore e cambiare il colore del bottone.
 const posts = [
     {
         "id": 1,
@@ -74,47 +76,38 @@ const posts = [
 let content = "";
 
 posts.forEach((elem) => {
-    const newDate = posts.map((elem) => {
-        return elem.created
-    })
-
-    const dateItaly = newDate.map((elem) => {
-        return elem.substring(8,10)+ "-" + elem.substring(5,8) + elem.substring(0,4)
-    })
-    for(let i=0; i<dateItaly.length; i++){
-        content +=`
-        <div class="post">
-            <div class="post__header">
-                <div class="post-meta">                    
-                    <div class="post-meta__icon">
-                        <img class="profile-pic" src="${elem.author.image}" alt="Phil Mangione">     
-                    </div>
-                    <div class="post-meta__data">
-                        <div class="post-meta__author">${elem.author.name}</div>
-                        <div class="post-meta__time">${dateItaly[i]}</div>
-                    </div>                    
-                </div>               
-            </div>
-            <div class="post__text">${elem.content}</div>
-            <div class="post__image">
-                <img src="${elem.media}" alt="">
-            </div>
-            <div class="post__footer">
-                <div class="likes js-likes">
-                    <div class="likes__cta">
-                        <a  class="like-button  js-like-button" href="#" data-postid="${elem.id}">
-                            <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
-                            <span class="like-button__label">Mi Piace</span>
-                        </a>
-                    </div>
-                    <div class="likes__counter">
-                        Piace a <b id="like-counter-${elem.id}" class="js-likes-counter">${elem.likes}</b> persone
-                    </div>
-                </div> 
-            </div>  
-        </div>        
-        `
-    }
+    content +=`
+    <div class="post">
+        <div class="post__header">
+            <div class="post-meta">                    
+                <div class="post-meta__icon">
+                    <img class="profile-pic" src="${elem.author.image}" alt="Phil Mangione">     
+                </div>
+                <div class="post-meta__data">
+                    <div class="post-meta__author">${elem.author.name}</div>
+                    <div class="post-meta__time">${elem.created}</div>
+                </div>                    
+            </div>               
+        </div>
+        <div class="post__text">${elem.content}</div>
+        <div class="post__image">
+            <img src="${elem.media}" alt="">
+        </div>
+        <div class="post__footer">
+            <div class="likes js-likes">
+                <div class="likes__cta">
+                    <a  class="like-button  js-like-button" href="#" data-postid="${elem.id}">
+                        <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
+                        <span class="like-button__label">Mi Piace</span>
+                    </a>
+                </div>
+                <div class="likes__counter">
+                    Piace a <b id="like-counter-${elem.id}" class="js-likes-counter">${elem.likes}</b> persone
+                </div>
+            </div> 
+        </div>  
+    </div>        
+    `
 })
 
 const card = document.getElementById('container');
@@ -123,11 +116,31 @@ const like = document.getElementsByClassName('js-like-button');
 
 for(let i=0; i<like.length; i++){
     like[i].addEventListener('click', function(){
-        const idCounter = this.dataset.postid;
+        const idCounter = parseInt(this.dataset.postid);
+        console.log(idCounter)
         const likes = document.getElementById(`like-counter-${idCounter}`);
         const likeNumber = parseInt(likes.innerText);
         likes.innerText = likeNumber+1
-        console.log(likeNumber)
+        const likeColor = document.getElementsByClassName('like-button')
+        console.log(likeColor)
+        likeColor[i].classList.add('red')
+        switch(likeNumber){
+            case 81:
+                likes.innerText = likeNumber-1
+                break;
+            case 120:
+                likes.innerText = likeNumber-1
+                break;
+            case 78:
+                likes.innerText = likeNumber-1
+                break;
+            case 56:
+                likes.innerText = likeNumber-1
+                break;
+            case 95:
+                likes.innerText = likeNumber-1
+                break;
+        }
     })
 }
 
