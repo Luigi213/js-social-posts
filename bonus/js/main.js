@@ -128,18 +128,23 @@ for(let i=0; i<like.length; i++){
         switch(likeNumber){
             case 81:
                 likes.innerText = likeNumber-1
+                likeColor[i].classList.remove('red')
                 break;
             case 120:
                 likes.innerText = likeNumber-1
+                likeColor[i].classList.remove('red')
                 break;
             case 78:
                 likes.innerText = likeNumber-1
+                likeColor[i].classList.remove('red')
                 break;
             case 56:
                 likes.innerText = likeNumber-1
+                likeColor[i].classList.remove('red')
                 break;
             case 95:
                 likes.innerText = likeNumber-1
+                likeColor[i].classList.remove('red')
                 break;
         }
     })
