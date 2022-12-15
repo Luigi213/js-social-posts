@@ -115,7 +115,8 @@ for(let i=0; i<like.length; i++){
         const likes = document.getElementById(`like-counter-${idCounter}`);
         const likeNumber = parseInt(likes.innerText);
         likes.innerText = likeNumber+1
-        console.log(likeNumber)
-    })
+        const likeColor = document.getElementsByClassName('like-button')
+        likeColor[i].classList.add('red')
+    }, {once : true})
 }
 
