@@ -13,8 +13,6 @@
 
 const likePost = [];
 
-console.log(likePost)
-
 const posts = [
     {
         "id": 1,
@@ -114,6 +112,7 @@ const card = document.getElementById('container');
 card.innerHTML = content;
 const like = document.getElementsByClassName('js-like-button');
 
+
 for(let i=0; i<like.length; i++){
     like[i].addEventListener('click', function(){
         const idCounter = this.dataset.postid;
@@ -122,5 +121,6 @@ for(let i=0; i<like.length; i++){
         likes.innerText = likeNumber+1
         const likeColor = document.getElementsByClassName('like-button')
         likeColor[i].classList.add('red')
+        likePost.push(idCounter)
     }, {once : true})
 }
