@@ -138,7 +138,6 @@ for(let i=0; i<like.length; i++){
 
 function createImage(userdate){
     const {image} = userdate
-    console.log(image)
     const {name} = userdate
     if(image == null){
     
@@ -153,7 +152,7 @@ function createImage(userdate){
         }
     
         const initials = letters.join('')
-    
+
         return `
             <div class="profile-pic-default">
                 <span>${initials}</span>
