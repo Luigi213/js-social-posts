@@ -122,7 +122,3 @@ for(let i=0; i<like.length; i++){
         likeColor[i].classList.add('red')
     }, {once : true})
 }
-
-function dateItaly(date){
-    return date.split('-').reverse().join('/')
-}
