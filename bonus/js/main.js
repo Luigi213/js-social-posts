@@ -81,7 +81,7 @@ posts.forEach((elem) => {
         <div class="post__header">
             <div class="post-meta">                    
                 <div class="post-meta__icon">
-                    <img class="profile-pic" src="${elem.author.image}" alt="Phil Mangione">     
+                    ${createImage(elem.author)} 
                 </div>
                 <div class="post-meta__data">
                     <div class="post-meta__author">${elem.author.name}</div>
@@ -135,6 +135,36 @@ for(let i=0; i<like.length; i++){
         })
     })
 }
+
+function createImage(userdate){
+    const {image} = userdate
+    console.log(image)
+    const {name} = userdate
+    if(image == null){
+    
+        const splits = name.split(' ')
+    
+        const letters = []
+    
+        for(let i=0; i<splits.length; i++){
+            const split = splits[i]
+            const initialLetter = split[0]
+            letters.push(initialLetter)
+        }
+    
+        const initials = letters.join('')
+    
+        return `
+            <div class="profile-pic-default">
+                <span>${initials}</span>
+            </div> 
+        `
+    }
+    else{
+        return `<img class="profile-pic" src="${image}" alt="Phil Mangione">` 
+    }
+}
+
 
 function dateItaly(date){
     return date.split('-').reverse().join('/')

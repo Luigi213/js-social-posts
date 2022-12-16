@@ -13,6 +13,8 @@
 
 const likePost = [];
 
+console.log(likePost)
+
 const posts = [
     {
         "id": 1,
