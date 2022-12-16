@@ -85,7 +85,7 @@ posts.forEach((elem) => {
                 </div>
                 <div class="post-meta__data">
                     <div class="post-meta__author">${elem.author.name}</div>
-                    <div class="post-meta__time">${elem.created}</div>
+                    <div class="post-meta__time">${dateItaly(elem.created)}</div>
                 </div>                    
             </div>               
         </div>
@@ -136,3 +136,6 @@ for(let i=0; i<like.length; i++){
     })
 }
 
+function dateItaly(date){
+    return date.split('-').reverse().join('/')
+}

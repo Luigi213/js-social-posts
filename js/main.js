@@ -10,6 +10,9 @@
 // Milestone 2 - Prendendo come riferimento il layout di esempio presente nell'html, stampiamo i post del nostro feed.
 
 // Milestone 3 - Se clicchiamo sul tasto "Mi Piace" cambiamo il colore al testo del bottone e incrementiamo il counter dei likes 
+
+const likePost = [];
+
 const posts = [
     {
         "id": 1,
@@ -80,7 +83,7 @@ posts.forEach((elem) => {
                 </div>
                 <div class="post-meta__data">
                     <div class="post-meta__author">${elem.author.name}</div>
-                    <div class="post-meta__time">${elem.created}</div>
+                    <div class="post-meta__time">${dateItaly(elem.created)}</div>
                 </div>                    
             </div>               
         </div>
@@ -120,3 +123,6 @@ for(let i=0; i<like.length; i++){
     }, {once : true})
 }
 
+function dateItaly(date){
+    return date.split('-').reverse().join('/')
+}
