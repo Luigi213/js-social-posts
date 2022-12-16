@@ -83,7 +83,7 @@ posts.forEach((elem) => {
                 </div>
                 <div class="post-meta__data">
                     <div class="post-meta__author">${elem.author.name}</div>
-                    <div class="post-meta__time">${dateItaly(elem.created)}</div>
+                    <div class="post-meta__time">${elem.created}</div>
                 </div>                    
             </div>               
         </div>
